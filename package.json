@@ -8,6 +8,7 @@
     "serve": "vite preview",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
     "lint:fix": "npm run lint --fix",
+    "coverageFromYarn": "yarn jest ${0} --coverage --collectCoverageOnlyFrom=${1} --watch",
     "check-types": "tsc",
     "test": "jest -env=jsdom --coverage --coverageReporters='text-summary'",
     "pre-commit-lint": "npm run check-types && yarn lint-staged"
@@ -66,7 +67,8 @@
     ],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
+      "!src/**/*.d.ts",
+      "!src/main.tsx"
     ],
     "coverageReporters": [
       "lcov",
