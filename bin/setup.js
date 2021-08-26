@@ -77,27 +77,6 @@ async function setup() {
 
     console.log("dependencies installed successfully!");
 
-    // Rename files and folder
-    // console.log("Updating folder Name");
-    // const oldDirName = `${folderPath}/apps/starter`;
-    // const newDirName = `${folderPath}/apps/${folderName}`;
-    // const oldDirE2E = `${folderPath}/apps/starter-e2e`;
-    // const newDirE2E = `${folderPath}/apps/${folderName}-e2e`;
-
-    // try {
-    //   fs.renameSync(oldDirName, newDirName);
-    //   fs.renameSync(oldDirE2E, newDirE2E);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-
-    // Changing the instance of starter to folderName
-    // console.log("Updating references....");
-    // await runShellCmd(
-    //   `git grep -lz starter | xargs -0 sed -i '' -e 's/starter/${folderName}/gi'`
-    // );
-    // console.log("References updated");
-
     await runShellCmd("npx rimraf ./.git");
 
     appendFileSync(".gitignore", "\r\ndist", "utf8");
@@ -105,8 +84,7 @@ async function setup() {
 
     /** remove extra files and folders from disk. we don't need it anymore */
     unlinkSync(join(process.cwd(), "README.md"));
-    // unlinkSync(join(process.cwd(), "bin", "setup.js"));
-    // rmdirSync(join(process.cwd(), "bin"));
+    unlinkSync(join(process.cwd(), "NOTES.md"));
 
     /** Changing the title of the page from Starter to folderName */
     const indexFilePath = `${folderPath}/index.html`;
@@ -122,34 +100,6 @@ async function setup() {
 
     await runShellCmd('git init && git add . && git commit -am "init commit"');
     console.log("new git repo initialized successfully!");
-
-    // Rename commitlint file
-    // fs.rename(
-    //   "./commitlint.config.cjs",
-    //   "./commitlint.config.js",
-    //   (renameErr) => {
-    //     if (renameErr) console.log(renameErr);
-    //   }
-    // );
-    // console.log("Renamed commitLint config file 🗂");
-
-    //Append to pre-commit file
-    // fs.appendFile("./.husky/pre-commit", "npm test", (fileAppendErr) => {
-    //   if (fileAppendErr) console.log(fileAppendErr);
-    // });
-    // console.log("Append npm test to the file ✍️");
-
-    // Changing reference of imports from @starter/component to folderName/component
-    // // await runShellCmd(
-    // //   `git grep -lz @starter | xargs -0 sed -i '' -e 's/@starter/@${folderName}/gi'`
-    // // );
-
-    // console.log("Imports updated");
-
-    // await runShellCmd(
-    //   "git init && git add . && git commit -am \"change reference of imports\""
-    // );
-    // console.log("git committed successfully!");
 
     console.log("Commands to run the project:");
     console.log();
