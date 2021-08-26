@@ -9,7 +9,7 @@
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
     "lint:fix": "npm run lint --fix",
     "check-types": "tsc",
-    "test": "jest -env=jsdom",
+    "test": "jest -env=jsdom --coverage --coverageReporters='text-summary'",
     "pre-commit-lint": "npm run check-types && yarn lint-staged"
   },
   "dependencies": {
