@@ -27,13 +27,13 @@ const NavList = styled.ul`
 
 const NavListItem = styled.li`
   display: flex;
-  width: 40%;
+  width: 30%;
   justify-content: space-between;
 `;
 
 const CounterWrapper = styled.div`
   display: flex;
-  width: 60%;
+  width: 70%;
   justify-content: space-between;
 
   span {
@@ -41,7 +41,11 @@ const CounterWrapper = styled.div`
     font-size: 14px;
   }
 `;
-export const HeaderComponent = () => {
+
+interface IProps {
+  ctxCount: number;
+}
+export const HeaderComponent = ({ ctxCount }: IProps) => {
   return (
     <HeaderWrapper>
       <NavWrapper>
@@ -53,8 +57,8 @@ export const HeaderComponent = () => {
         </NavList>
       </NavWrapper>
       <CounterWrapper>
-        <span>CTXCount: 0</span>
-        <span>RTKCount: 0</span>
+        <span>CTXCount: {ctxCount}</span>
+        <span>Loggedin: 0</span>
       </CounterWrapper>
     </HeaderWrapper>
   );
