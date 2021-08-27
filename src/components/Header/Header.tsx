@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { fetchUsers, logout } from "../../features/users/usersSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -27,13 +29,17 @@ const NavList = styled.ul`
 
 const NavListItem = styled.li`
   display: flex;
-  width: 30%;
+  width: 20%;
   justify-content: space-between;
+
+  a {
+    padding: 0 10px;
+  }
 `;
 
 const CounterWrapper = styled.div`
   display: flex;
-  width: 70%;
+  width: 80%;
   justify-content: space-between;
 
   span {
@@ -46,6 +52,10 @@ interface IProps {
   ctxCount: number;
 }
 export const HeaderComponent = ({ ctxCount }: IProps) => {
+  const {
+    users: { userName },
+  } = useAppSelector((state) => state.users);
+  const dispatch = useAppDispatch();
   return (
     <HeaderWrapper>
       <NavWrapper>
@@ -53,12 +63,21 @@ export const HeaderComponent = ({ ctxCount }: IProps) => {
           <NavListItem>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/counter">Counter</NavLink>
+            <NavLink to="/users">Users</NavLink>
           </NavListItem>
         </NavList>
       </NavWrapper>
       <CounterWrapper>
         <span>CTXCount: {ctxCount}</span>
-        <span>Loggedin: 0</span>
+        {!userName && (
+          <button onClick={() => dispatch(fetchUsers())}>Login</button>
+        )}
+        {userName && (
+          <>
+            <span>user : {userName}</span>
+            <button onClick={() => dispatch(logout())}>Logout</button>
+          </>
+        )}
       </CounterWrapper>
     </HeaderWrapper>
   );

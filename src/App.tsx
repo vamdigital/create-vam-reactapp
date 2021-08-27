@@ -5,6 +5,7 @@ import { Header } from "./components/Header";
 import { CounterContextProvider } from "./context/CounterContext";
 import { CounterPage } from "./pages/Counter";
 import { HomePage } from "./pages/Home";
+import { Users } from "./pages/Users";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path="/counter">
             <CounterPage />
+          </Route>
+          <Route path="/users">
+            <Users />
           </Route>
         </Switch>
       </CounterContextProvider>

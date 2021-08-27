@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import App from "./App";
 import "./index.css";
+import { store } from "./store/store";
 
 const GlobalStyles = createGlobalStyle`
 	html {
@@ -31,6 +33,10 @@ const GlobalStyles = createGlobalStyle`
 		list-style: none;
 	}
 
+	button {
+		font-size: 12px;
+	}
+
 
 
 `;
@@ -38,9 +44,11 @@ const GlobalStyles = createGlobalStyle`
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyles />
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
