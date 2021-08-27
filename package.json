@@ -11,6 +11,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
+    "tsc:watch": "yarn tsc --watch",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
     "lint:fix": "npm run lint --fix",
     "coverageFromYarn": "yarn jest ${0} --coverage --collectCoverageOnlyFrom=${1} --watch",
