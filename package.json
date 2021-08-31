@@ -1,8 +1,9 @@
 {
   "name": "create-vam-react",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "license": "MIT",
   "bin": "bin/setup.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/vamdigital/create-vamreactapp.git"
